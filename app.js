@@ -1,4 +1,4 @@
-const {Client} = require("whatsapp-web.js")
+const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require("qrcode")
 const express = require('express')
 const app = express()
@@ -9,7 +9,13 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 
-const client = new Client()
+const client = new Client({
+    authStrategy: new LocalAuth(),
+    puppeteer: {
+        headless: true, // Railway gibi sunucularda tarayıcının arayüzsüz çalışması için
+        args: ['--no-sandbox', '--disable-setuid-sandbox'] // Hatanın çözümü
+    }
+})
 
 app.set('views', path.join(__dirname, 'views'));
 app.set("view engine", "ejs")
