@@ -3,7 +3,6 @@ const qrcode = require("qrcode")
 const express = require('express')
 const app = express()
 const router = express.Router()
-const qr = require('qr-image');
 const path = require('path');
 const http = require('http');
 const server = http.createServer(app);
