@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp QR Kodu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #qr-container {
+            margin-top: 20px;
+            display: none;
+            justify-content: center;
+        }
+        #qr-container img {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<h1>WhatsApp Bildirim Sistemi</h1>
+<p id="status">Whatsapp QR Kodu oluşturuluyor. Lütfen bekleyiniz...</p>
+
+<div id="qr-container">
+    <img id="qr-code" src="" alt="QR Kod">
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    // Sunucu ile bağlantı kur
+    const socket = io();
+
+    const qrCodeContainer = document.getElementById('qr-container');
+    const qrCodeElement = document.getElementById('qr-code');
+    const statusElement = document.getElementById('status');
+
+    // Sunucudan gelen 'qrCodeUpdate' olayını dinle
+    socket.on('qrCodeUpdate', (qrImage) => {
+        if (qrImage === 'ready') {
+            statusElement.innerText = 'Bağlantı başarılı! WhatsApp istemcisi hazır.';
+            qrCodeContainer.style.display = 'none';
+        } else {
+            statusElement.innerText = 'Yeni QR kodu oluşturuldu. Lütfen sırasıyla "Whatsapp > Ayarlar > Bağlı Cihazlar > Cihaz bağla" bölümünden taratınız.';
+            qrCodeContainer.style.display = 'flex';
+            // Gelen QR kodunu resim kaynağı olarak ayarla
+            qrCodeElement.src = qrImage;
+        }
+    });
+</script>
+</script>
+</body>
+</html>

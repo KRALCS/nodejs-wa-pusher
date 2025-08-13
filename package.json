@@ -1,0 +1,27 @@
+{
+  "name": "notifywp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "@sequelize/mariadb": "^7.0.0-alpha.46",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.3",
+    "qr-image": "^3.2.0",
+    "qrcode": "^1.5.4",
+    "qrcode-terminal": "^0.12.0",
+    "sequelize": "^6.37.7",
+    "socket.io": "^4.8.1",
+    "whatsapp-web.js": "^1.31.0"
+  }
+}
