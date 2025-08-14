@@ -33,6 +33,7 @@ router.get("/", async (req, res) => {
 router.post("/send", async (req, res) => {
     try {
         const {phone, text} = req.body
+        console.log(phone, text)
         sendMessage(phone, text)
         res.status(201).json({"message": "İşlem başarılı"})
     } catch (error) {
