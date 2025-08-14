@@ -36,7 +36,7 @@ router.post("/send", async (req, res) => {
         sendMessage(phone, text)
         res.status(201).json({"message": "İşlem başarılı", "phone": phone, "text": text})
     } catch (error) {
-        res.status(500).json({"message": "İşlem yapılamadı", "hata": error})
+        res.status(500).json({"message": "İşlem yapılamadı", "hata": error, "phone": phone, "text": text})
     }
     // try {
     //     res.render('index');
