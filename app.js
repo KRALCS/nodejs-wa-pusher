@@ -38,11 +38,11 @@ router.post("/send", async (req, res) => {
     } catch (error) {
         res.status(500).json({"message": "İşlem yapılamadı"})
     }
-    try {
-        res.render('index');
-    } catch (error) {
-        res.status(500).json({"message": "Sayfa başlatılamadı!"})
-    }
+    // try {
+    //     res.render('index');
+    // } catch (error) {
+    //     res.status(500).json({"message": "Sayfa başlatılamadı!"})
+    // }
 })
 
 server.listen(3000, async () => {
