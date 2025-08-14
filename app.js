@@ -63,11 +63,11 @@ const connectToDb = async () => {
             io.emit('qrCodeUpdate', qrImage);
         })
 
-        client.on("ready", async (eventName, listener) => {
+        client.on("ready", async () => {
             console.log('WhatsApp İstemcisi hazır!');
             // QR kodu artık gerekmediği için temizlenebilir
             io.emit('qrCodeUpdate', 'ready');
-            client.off("qr", listener)
+            // client hazır olunca qr durdurulsa daha iyi olur
         })
 
         client.on("message", (message) => {
